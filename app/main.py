@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1 import analysis_router
+from app.api.v1 import router
 from app.core.config import settings
 
 app = FastAPI(
@@ -8,7 +8,7 @@ app = FastAPI(
     docs_url="/docs" if settings.DEBUG else None
 )
 
-app.include_router(analysis_router, prefix="/api/v1/analysis", tags=["Analysis"])
+app.include_router(router, prefix="/api/v1/analysis", tags=["Analysis"])
 
 @app.get("/health")
 async def health_check():
